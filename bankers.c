@@ -8,6 +8,11 @@ int main(){
     printf("Enter number of resource types:");
     scanf("%d",&resources);
 
+    if(processes<=0 || resources<=0){
+        printf("Invalid number of processes or resources!\n");
+        return 1;
+    }
+
     int available[resources];
     int allocation[processes][resources];
     int maximum[processes][resources];
