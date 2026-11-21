@@ -106,5 +106,32 @@ while(count<processes){
         printf("System is in UNSAFE state\n");
     }
 
+// Resource request algorithm
+ int process_number;
+ int request[resources];
+
+printf("\nEnter the process making reuqest (0 to %d):",processes-1);
+scanf("%d",&process_number);
+if(process_number<0 || process_number>=processes){
+    printf("Invalid processnumber!\n");
+    return 1;
+}
+printf("Enter the requested resources:\n");
+for (int j=0;j<resources;j++){
+    scanf("%d",&request[j]);
+    
+    if(request[j]>need[process_number][j]){
+        printf("error:Request exceeds maximum claim!\n");
+        return 1;
+    }
+
+    if(request[j]>available[j]){
+        printf("Resources not available. Process must wait\n");
+        return 1;
+    }
+}
+
+
+
 return 0;
 }
